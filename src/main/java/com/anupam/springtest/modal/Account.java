@@ -2,11 +2,13 @@ package com.anupam.springtest.modal;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 
 @AllArgsConstructor
 @Data
+@ToString
 public class Account {
 
     private String id;
