@@ -12,7 +12,7 @@ public class AccountController {
     @GetMapping("/accounts")
     public List<Account> getAllAccount() {
         Account a = new Account("E001", "ald001", false, "20/12/1993", 200, 4000, "pune");
-        a.setCity("Mumbai");
+        a.setCity("Pune");
         list.add(a);
         return list;
     }
