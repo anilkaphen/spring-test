@@ -6,10 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class CricketController {
@@ -66,6 +63,53 @@ public class CricketController {
                 return new ResponseEntity("User deleted successfully", HttpStatus.OK);
             }
             return new ResponseEntity("Player doesn't exist", HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch(Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //    get-->return average of palyer examplle pankaj: 10
+    @GetMapping("/avg/{name}")
+    public ResponseEntity<Long> getPlayers(@PathVariable String name) {
+        try {
+            long sum=0;
+            List<Integer> list = map.get(name);
+            for(int i: list) {
+                sum=sum+i;
+            }
+            return new ResponseEntity(sum/list.size(), HttpStatus.OK);
+        } catch(Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //get --> find player name who scroed highest number
+    @GetMapping("/highest/score")
+    public ResponseEntity<String> highestScorePlayerName() {
+        int highest=-1, temp=-1;
+        String highestScorePlayerName="";
+        try {
+            for(Map.Entry<String, List<Integer>> e: map.entrySet()){
+                List<Integer> list = e.getValue();
+                temp = Collections.max(list);
+                if(temp > highest) {
+                    highest = temp;
+                    highestScorePlayerName= e.getKey();
+                }
+            }
+
+            return new ResponseEntity(highestScorePlayerName, HttpStatus.OK);
+        } catch(Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+//    get --> find player name whose avg is lower
+    @GetMapping("/lowest/avg")
+    public ResponseEntity<String> lowestAvgPlayerName() {
+        try {
+
+            return new ResponseEntity("null", HttpStatus.OK);
         } catch(Exception e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
