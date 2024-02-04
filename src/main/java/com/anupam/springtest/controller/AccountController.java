@@ -13,6 +13,7 @@ public class AccountController {
     public List<Account> getAllAccount() {
         Account a = new Account("E001", "ald001", false, "20/12/1993", 200, 4000, "pune");
         a.setCity("Pune");
+        a.setBalance(10000);
         list.add(a);
         return list;
     }
