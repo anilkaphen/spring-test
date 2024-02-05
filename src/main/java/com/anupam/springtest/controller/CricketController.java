@@ -108,10 +108,8 @@ public class CricketController {
     //    get --> find player name whose avg is lower
     @GetMapping("/lowest/avg")
     public ResponseEntity<String> lowestAvgPlayerName() {
-
         int lowest = -1, avg = -1, sum = 0;
         String lowestPlayerName = "";
-
         try {
             for (Map.Entry<String, List<Integer>> e : map.entrySet()) {
                 List<Integer> list = e.getValue();
@@ -123,11 +121,10 @@ public class CricketController {
                     lowest = avg;
                     lowestPlayerName = e.getKey();
                 }
-                return new ResponseEntity(lowestPlayerName, HttpStatus.OK);
             }
+            return new ResponseEntity(lowestPlayerName, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity("",HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return "";
     }
 }
