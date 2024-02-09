@@ -13,7 +13,7 @@ public class CricketController {
     private Map<String, List<Integer>> map = new HashMap<>();
 
     @GetMapping("/players")
-    public ResponseEntity<Map<String, List<Integer>>> getPlayers() {
+    public ResponseEntity<Map<String, List<Integer>>> getAverage() {
         map.put("panakj", Arrays.asList(10, 20, 30, 40, 0));
         try {
             return new ResponseEntity(map, HttpStatus.OK);
@@ -35,7 +35,7 @@ public class CricketController {
     }
 
     @GetMapping("/player/{name}")
-    public ResponseEntity<Player> addPlayer(@PathVariable String name) {
+    public ResponseEntity<Player> getPlayer(@PathVariable String name) {
         try {
             return new ResponseEntity(map.get(name), HttpStatus.OK);
         } catch (Exception e) {
@@ -70,7 +70,7 @@ public class CricketController {
 
     //    get-->return average of palyer examplle pankaj: 10
     @GetMapping("/avg/{name}")
-    public ResponseEntity<Long> getPlayers(@PathVariable String name) {
+    public ResponseEntity<Long> getAverage(@PathVariable String name) {
         try {
             long sum = 0;
             List<Integer> list = map.get(name);
@@ -90,8 +90,7 @@ public class CricketController {
         String highestScorePlayerName = "";
 
         try {
-for (Map.Entry<String, List<Integer>> e : map.entrySet())
-{
+            for (Map.Entry<String, List<Integer>> e : map.entrySet()) {
                 List<Integer> list = e.getValue();
                 temp = Collections.max(list);
                 if (temp > highest) {
