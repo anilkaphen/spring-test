@@ -90,7 +90,8 @@ public class CricketController {
         String highestScorePlayerName = "";
 
         try {
-            for (Map.Entry<String, List<Integer>> e : map.entrySet()) {
+for (Map.Entry<String, List<Integer>> e : map.entrySet())
+{
                 List<Integer> list = e.getValue();
                 temp = Collections.max(list);
                 if (temp > highest) {
