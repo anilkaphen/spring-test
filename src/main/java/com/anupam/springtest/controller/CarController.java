@@ -27,8 +27,6 @@ public class CarController {
         }
         return carList;
     }
-
-
     @PutMapping("/car")
     public ResponseEntity<Car> addPlayer(@RequestBody Car car) {
         try {
