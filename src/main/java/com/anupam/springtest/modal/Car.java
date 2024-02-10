@@ -6,9 +6,6 @@ public class Car {
     private String color;
     private String brand;
 
-    public static int size() {
-    }
-
     public String getId() {
         return id;
     }
