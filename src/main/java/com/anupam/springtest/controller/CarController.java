@@ -1,17 +1,14 @@
 package com.anupam.springtest.controller;
-
 import com.anupam.springtest.modal.Car;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class CarController {
     private List<Car> list = new ArrayList<>();
-
     @GetMapping("/car")
     public List<Car> getAllCarDetails() {
         list.add(new Car("a001", "Alto", 5555, "Red", "Maruti"));
@@ -21,7 +18,6 @@ public class CarController {
         list.add(new Car("a002", "indica", 10000, "Silver", "Tata"));
         return list;
     }
-
     @GetMapping("/car/brand/{brand}")
     public List<Car> getCarBrandDetails(@PathVariable String brand) {
         List<Car> carList = new ArrayList<>();
@@ -55,12 +51,10 @@ public class CarController {
             lowest = price;
         }
     }
-
     @PostMapping("/car")
     public void updateCar(@RequestBody Car car) {
         list.add(car);
     }
-
     @GetMapping("/car/color/{color}")
     public List<Car> getCarcolorDetails(@PathVariable String color) {
         List<Car> carList = new ArrayList<>();
