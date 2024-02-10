@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class CarController {
@@ -33,11 +32,11 @@ public class CarController {
         return carList;
     }
 
+
     @PutMapping("/car")
     public ResponseEntity<Car> addPlayer(@RequestBody Car car) {
         try {
             list.add(car);
-
             return new ResponseEntity(car, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -45,9 +44,16 @@ public class CarController {
     }
 
     @GetMapping("/lowest/price")
-    public List<Car> getCarDetailsBycolor() {
+    public List<Car> getCarDetailsByprice() {
+        List<Car> carList = new ArrayList<>();
         return null;
-
+        int price = 0, lowest = -1, sum = 0;
+        for (int i : list) {
+            sum = sum + i;
+        }
+        if (price < lowest) {
+            lowest = price;
+        }
     }
 
     @PostMapping("/car")
@@ -55,12 +61,49 @@ public class CarController {
         list.add(car);
     }
 
+    @GetMapping("/car/color/{color}")
+    public List<Car> getCarcolorDetails(@PathVariable String color) {
+        List<Car> carList = new ArrayList<>();
+        for (Car c : list) {
+            if (c.getColor().equals(color)) ;
+
+            carList.add(c);
+        }
+        return carList;
+    }
+
+    @GetMapping("/highest/price")
+    public List<Car> getCarDetailsByprice() {
+        List<Car> carList = new ArrayList<>();
+        int price = 0, highest = -1, sum = 0;
+        for (Car i : list) {
+            sum = sum + i;
+        }
+        if (price > highest) {
+            highest = price;
+        }
+
+
+        return null;
+
+    }
+
+    @GetMapping("/avg/{price}")
+    public int getCarPriceDetails(@PathVariable String price, List<Car> cars) {
+
+
+        int sum = 0, avg;
+        for(int i = 0; i < cars.size(); i++)
+            sum +=  cars.get(i).getPrice();
+        avg = sum / cars.size();
+        return avg;
+
+
+        }
+
+
+
 }
-
-
-
-
-
 
 
 
