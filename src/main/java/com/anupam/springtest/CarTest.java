@@ -30,11 +30,19 @@ public class CarTest {
     }
 
     public List<Car> getAllCarDetails() {
-        carList.add(new Car("a001", "Alto", 5555, "Red", "Maruti"));
-        carList.add(new Car("a003", "zen", 6000, "Blue", "Maruti"));
-        carList.add(new Car("a005", "bolero", 7000, "White", "Mahindra"));
+        carList.add(new Car("a001", "Alto", 5000, "Red", "Maruti"));
+        carList.add(new Car("a002", "zen", 6000, "Blue", "Maruti"));
+        carList.add(new Car("a003", "bolero", 7000, "White", "Mahindra"));
         carList.add(new Car("a004", "i20", 8000, "Black", "Honda"));
-        carList.add(new Car("a002", "indica", 10000, "Silver", "Tata"));
+        carList.add(new Car("a005", "indica", 10000, "Silver", "Tata"));
+        carList.add(new Car("a006", "Alto", 2000, "Red", "Maruti"));
+        carList.add(new Car("a007", "zen", 6000, "Blue", "Maruti"));
+        carList.add(new Car("a008", "bolero", 7000, "White", "Mahindra"));
+        carList.add(new Car("a009", "i20", 8000, "Black", "Honda"));
+        carList.add(new Car("a010", "indica", 10000, "Silver", "Tata"));
+        carList.add(new Car("a011", "Alto", 18000, "Red", "Maruti"));
+        carList.add(new Car("a012", "zen", 6000, "Blue", "Maruti"));
+
         return carList;
     }
 
