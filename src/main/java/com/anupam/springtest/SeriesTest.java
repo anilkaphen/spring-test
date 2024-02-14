@@ -37,7 +37,6 @@ public class SeriesTest {
     }
    return list;
     }
-
     public ArrayList getWordCount(){
         ArrayList  list1 = new ArrayList<>();
 
@@ -61,7 +60,6 @@ public class SeriesTest {
                     count++;
             }
             System.out.println(list1.get(i)+"  " + count + " times");
-
     }
         return list1;
     }}
