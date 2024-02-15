@@ -10,8 +10,8 @@ public class SeriesTest {
         System.out.println("getseriesnumber: \n" + seriesList);
         List<Integer> square = s.squareOfNumber(6);
         System.out.println("getseriesnum1: \n" + square);
-        List<String>wordCount= s.getWordCount();
-        System.out.println("getWordCount : \n" +wordCount);
+        List<String> wordCount = s.getWordCount();
+        System.out.println("getWordCount : \n" + wordCount);
     }
 
     public List<Integer> getSeriesNumber(int num) {
@@ -24,26 +24,22 @@ public class SeriesTest {
         return list;
     }
 
-
-
     public List<Integer> squareOfNumber(int number) {
-
-        List<Integer>list=new ArrayList<>();
-   int t=1;
-
-    for(int i=1;i<number;i++){
-       t=(number*number*number);
-        list.add(t);
+        List<Integer> list = new ArrayList<>();
+        int t = 1;
+        for (int i = number; i > 0; i--) {
+            t = (i * i * i);
+            list.add(t);
+        }
+        return list;
     }
-   return list;
-    }
-    public ArrayList getWordCount(){
-        ArrayList  list1 = new ArrayList<>();
+
+    public List<String> getWordCount() {
+        List<String> list1 = new ArrayList<>();
 
         list1.add("one");
-        list1.add("Two");
-
-        list1.add("Three");
+        list1.add("two");
+        list1.add("three");
         list1.add("one");
         list1.add("four");
         list1.add("five");
@@ -55,11 +51,15 @@ public class SeriesTest {
 
         for (int i = 0; i < list1.size(); i++) {
             int count = 0;
-            for (int j = 0; j < list1.size(); j++) {
-                if(list1.get(i).equals(list1.get(j)))
+            String firstLoopTemp=list1.get(i);
+            for (int m = 0; m < list1.size(); m++) {
+                String secondLoopTemp=list1.get(m);
+                if (firstLoopTemp.equals(secondLoopTemp)) {
                     count++;
+                }
             }
-            System.out.println(list1.get(i)+"  " + count + " times");
-    }
+            System.out.println(list1.get(i) + "  " + count + " times");
+        }
         return list1;
-    }}
+    }
+}
