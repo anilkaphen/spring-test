@@ -27,6 +27,13 @@ public class CarTest {
 
         int highestprice = carTest.getCarHighestPrice();
         System.out.println("getcarhighesttprice: \n" + highestprice);
+
+        List<Car> list5 = carTest.getCarByColorAndGreaterThanPrice("Red", 5000);
+        System.out.println("getCarByColorAndGreaterThanPrice: \n" + list5);
+
+        List<Car> list6 = carTest.getCarListGreaterThanAveragePrice();
+        System.out.println("getCarListGreaterThanAveragePrice: \n" + list6);
+
     }
 
     public List<Car> getAllCarDetails() {
@@ -93,6 +100,27 @@ public class CarTest {
             }
         }
         return highest;
+    }
+
+    public List<Car> getCarByColorAndGreaterThanPrice(String color, int price) {
+        List<Car> list = new ArrayList<>();
+        for (Car c : carList) {
+            if (c.getColor().equals(color) && c.getPrice() > price) {
+                list.add(c);
+            }
+        }
+        return list;
+    }
+
+    public List<Car> getCarListGreaterThanAveragePrice() {
+        List<Car> list = new ArrayList<>();
+        long average = getCarAveragePrice();
+        for (Car c : carList) {
+            if (average < c.getPrice()) {
+                list.add(c);
+            }
+        }
+        return list;
     }
 }
 
