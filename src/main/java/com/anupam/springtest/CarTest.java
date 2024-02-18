@@ -21,21 +21,24 @@ public class CarTest {
         Long carAveragePrice = carTest.getCarAveragePrice();
         System.out.println("getCarByprice: \n" + carAveragePrice);
 
-        //  int lowestprice = carTest.getCarLowestPrice();
-        //  System.out.println("getcarlowestprice: \n" + lowestprice);
+          int lowestprice = carTest.getCarLowestPrice();
+          System.out.println("getcarlowestprice: \n" + lowestprice);
 
-        //  int highestprice = carTest.getCarHighestPrice();
-        // System.out.println("getcarhighesttprice: \n" + highestprice);
-        int diffPrice = carTest.getCarLowestPriceDiffHighest();
-        System.out.println("getcarhighesttprice: \n" + diffPrice);
-        int diffPrice1 = carTest.getCarHighestPriceDifferencelowerprice();
-        System.out.println("getcarlowesttprice: \n" + diffPrice1);
+          int highestprice = carTest.getCarHighestPrice();
+         System.out.println("getcarhighesttprice: \n" + highestprice);
+//        int diffPrice = carTest.getCarLowestPriceDiffHighest();
+//        System.out.println("getcarhighesttprice: \n" + diffPrice);
+//        int diffPrice1 = carTest.getCarHighestPriceDifferencelowerprice();
+//        System.out.println("getcarlowesttprice: \n" + diffPrice1);
 
         List<Car> list5 = carTest.getCarByColorAndGreaterThanPrice("Red", 5000);
         System.out.println("getCarByColorAndGreaterThanPrice: \n" + list5);
 
         List<Car> list6 = carTest.getCarListGreaterThanAveragePrice();
         System.out.println("getCarListGreaterThanAveragePrice: \n" + list6);
+        int difflowestandhighest = carTest. getCarDiffLowestAndHighest();
+//        System.out.println("getcarlowestandhighest: \n" +  difflowestandhighest());
+
 
 
     }
@@ -86,7 +89,7 @@ public class CarTest {
         return avg;
     }
 
-    public int getCarLowestPriceDiffHighest() {
+    public int getCarLowestPrice() {
         int lowest = 99999;
         for (Car c : carList) {
             if (lowest > c.getPrice()) {
@@ -96,7 +99,7 @@ public class CarTest {
         return lowest;
     }
 
-    public int getCarHighestPriceDifferencelowerprice() {
+    public int getCarHighestPrice() {
         int highest = -1;
         for (Car c : carList) {
             if (highest < c.getPrice()) {
@@ -129,17 +132,33 @@ public class CarTest {
 
     /**
      * Find price difference for given brand means (write api to find difference between highest and lowest car price)
+     *
      * @return
      */
-    public long getCarBranDifferencePrice(String brand) {
-
-        return 0;
+    public int getCarDiffLowestAndHighest() {
+        List<Car> List = new ArrayList<>();
+        int lowest = 0, highest = 0, max = 0;
+        for (Car c : carList) {
+            if (List.size() > 0) {
+                max = highest - lowest;
+            }
+        }
+        return max;
     }
+    public List<Car> getCarByBrand(String brand) {
+        int c=0;
+        List<Car> list = new ArrayList<>();
+        for(Car c:carList){
+            if( c.getBrand().equals( brand)){
+                c++;
+            }
 
-    public int getCarListPriceAndDiffBrand(String brand) {
+            }
+        }
 
-        return 0;
-    }
+
+
+
 }
 
 
