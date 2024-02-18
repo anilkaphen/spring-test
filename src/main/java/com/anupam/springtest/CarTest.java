@@ -3,7 +3,6 @@ package com.anupam.springtest;
 import com.anupam.springtest.modal.Car;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CarTest {
@@ -37,8 +36,7 @@ public class CarTest {
 
         List<Car> list6 = carTest.getCarListGreaterThanAveragePrice();
         System.out.println("getCarListGreaterThanAveragePrice: \n" + list6);
-        long diffPrice2 = carTest.getCarBrandifferencePrice();
-        System.out.println("getCarBrandifferencePrice: \n" + diffPrice2);
+
 
     }
 
@@ -129,23 +127,18 @@ public class CarTest {
         return list;
     }
 
-    public long getCarBrandifferencePrice() {
-        int sum = 0, avg = 0;
-        for (int i = 0; i < carList.size(); i++) {
-            sum += carList.get(i).getPrice();
-        }
-        avg = sum / carList.size();
-        return avg;
+    /**
+     * Find price difference for given brand means (write api to find difference between highest and lowest car price)
+     * @return
+     */
+    public long getCarBranDifferencePrice(String brand) {
+
+        return 0;
     }
 
-    public List<Car> getCarListPriceAndDiffBrand(String brand) {
-        List<Car> list = new ArrayList<>();
-        for (Car c : carList) {
-            if (c.getBrand().equals(brand)) {
-                list.add(c);
-            }
-        }
-        return list;
+    public int getCarListPriceAndDiffBrand(String brand) {
+
+        return 0;
     }
 }
 
