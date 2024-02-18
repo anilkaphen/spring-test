@@ -21,11 +21,11 @@ public class CarTest {
         Long carAveragePrice = carTest.getCarAveragePrice();
         System.out.println("getCarByprice: \n" + carAveragePrice);
 
-          int lowestprice = carTest.getCarLowestPrice();
-          System.out.println("getcarlowestprice: \n" + lowestprice);
+        int lowestprice = carTest.getCarLowestPrice();
+        System.out.println("getcarlowestprice: \n" + lowestprice);
 
-          int highestprice = carTest.getCarHighestPrice();
-         System.out.println("getcarhighesttprice: \n" + highestprice);
+        int highestprice = carTest.getCarHighestPrice();
+        System.out.println("getcarhighesttprice: \n" + highestprice);
 //        int diffPrice = carTest.getCarLowestPriceDiffHighest();
 //        System.out.println("getcarhighesttprice: \n" + diffPrice);
 //        int diffPrice1 = carTest.getCarHighestPriceDifferencelowerprice();
@@ -36,9 +36,8 @@ public class CarTest {
 
         List<Car> list6 = carTest.getCarListGreaterThanAveragePrice();
         System.out.println("getCarListGreaterThanAveragePrice: \n" + list6);
-        int difflowestandhighest = carTest. getCarDiffLowestAndHighest();
-//        System.out.println("getcarlowestandhighest: \n" +  difflowestandhighest());
-
+        int difflowestandhighest = carTest.getCarDiffLowestAndHighest();
+        System.out.println("getcarlowestandhighest: \n" + difflowestandhighest);
 
 
     }
@@ -136,31 +135,9 @@ public class CarTest {
      * @return
      */
     public int getCarDiffLowestAndHighest() {
-        List<Car> List = new ArrayList<>();
-        int lowest = 0, highest = 0, max = 0;
-        for (Car c : carList) {
-            if (List.size() > 0) {
-                max = highest - lowest;
-            }
-        }
-        return max;
+        return getCarHighestPrice() - getCarLowestPrice();
     }
-    public List<Car> getCarByBrand(String brand) {
-        int c=0;
-        List<Car> list = new ArrayList<>();
-        for(Car c:carList){
-            if( c.getBrand().equals( brand)){
-                c++;
-            }
-
-            }
-        }
-
-
-
-
 }
-
 
 
 
