@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarTest {
-    private static List<Car> carList = new ArrayList<>();
-    private static CarTest carTest = new CarTest();
+    private static List<Car> unsoldInventory = new ArrayList<>();
+    private static List<Car> soldInventory = new ArrayList<>();
 
     public static void main(String[] args) {
+        CarTest carTest = new CarTest();
         carTest.getAllCarDetails();
 
         List<Car> brandCarList = carTest.getCarByBrand("Maruti");
@@ -21,50 +22,54 @@ public class CarTest {
         Long carAveragePrice = carTest.getCarAveragePrice();
         System.out.println("getCarByprice: \n" + carAveragePrice);
 
-        int lowestprice = carTest.getCarLowestPrice();
+        int lowestprice = carTest.getCarLowestPrice(unsoldInventory);
         System.out.println("getcarlowestprice: \n" + lowestprice);
 
-        int highestprice = carTest.getCarHighestPrice();
+        int highestprice = carTest.getCarHighestPrice(unsoldInventory);
         System.out.println("getcarhighesttprice: \n" + highestprice);
-//        int diffPrice = carTest.getCarLowestPriceDiffHighest();
-//        System.out.println("getcarhighesttprice: \n" + diffPrice);
-//        int diffPrice1 = carTest.getCarHighestPriceDifferencelowerprice();
-//        System.out.println("getcarlowesttprice: \n" + diffPrice1);
 
         List<Car> list5 = carTest.getCarByColorAndGreaterThanPrice("Red", 5000);
         System.out.println("getCarByColorAndGreaterThanPrice: \n" + list5);
+
         int list9 = carTest.getCarByBrandCount("Tata");
         System.out.println("getCarByBrandCountDetails: \n" + list9);
 
         List<Car> list6 = carTest.getCarListGreaterThanAveragePrice();
         System.out.println("getCarListGreaterThanAveragePrice: \n" + list6);
+
         int difflowestandhighest = carTest.getCarDiffLowestAndHighest();
         System.out.println("getcarlowestandhighest: \n" + difflowestandhighest);
+
         int list7 = carTest.getCarByColorCount("Blue");
-        System.out.println("getCarByColorCountDetails: \n" + list9);
+        System.out.println("getCarByColorCount: \n" + list7);
+
+        int list8 = carTest.getCarPriceDifferenceByBrand("Maruti");
+        System.out.println("getCarPriceDifferenceByBrand: \n" + list8);
 
     }
 
     public List<Car> getAllCarDetails() {
-        carList.add(new Car("a001", "Alto", 5000, "Red", "Maruti"));
-        carList.add(new Car("a002", "zen", 6000, "Blue", "Maruti"));
-        carList.add(new Car("a003", "bolero", 7000, "White", "Mahindra"));
-        carList.add(new Car("a004", "i20", 8000, "Black", "Honda"));
-        carList.add(new Car("a005", "indica", 10000, "Silver", "Tata"));
-        carList.add(new Car("a006", "Alto", 2000, "Red", "Maruti"));
-        carList.add(new Car("a007", "zen", 6000, "Blue", "Maruti"));
-        carList.add(new Car("a008", "bolero", 7000, "White", "Mahindra"));
-        carList.add(new Car("a009", "i20", 8000, "Black", "Honda"));
-        carList.add(new Car("a010", "indica", 10000, "Silver", "Tata"));
-        carList.add(new Car("a011", "Alto", 18000, "Red", "Maruti"));
-        carList.add(new Car("a012", "zen", 6000, "Blue", "Maruti"));
+        unsoldInventory.add(new Car("a001", "Alto", 5000, "Red", "Maruti"));
+        unsoldInventory.add(new Car("a002", "zen", 6000, "Blue", "Maruti"));
+        unsoldInventory.add(new Car("a003", "bolero", 7000, "White", "Mahindra"));
+        unsoldInventory.add(new Car("a004", "i20", 8000, "Black", "Honda"));
+        unsoldInventory.add(new Car("a005", "indica", 10000, "Silver", "Tata"));
+        unsoldInventory.add(new Car("a006", "Alto", 2000, "Red", "Maruti"));
+        unsoldInventory.add(new Car("a007", "zen", 6000, "Blue", "Maruti"));
+        unsoldInventory.add(new Car("a008", "bolero", 17000, "White", "Mahindra"));
+        unsoldInventory.add(new Car("a009", "i20", 8000, "Black", "Honda"));
+        unsoldInventory.add(new Car("a010", "indica", 20000, "Silver", "Tata"));
+        unsoldInventory.add(new Car("a011", "E SERIES", 18000, "Red", "BMW"));
+        unsoldInventory.add(new Car("a012", "C SERIES", 16000, "Blue", "BMW"));
+        unsoldInventory.add(new Car("a013", "seltos", 8978, "Red", "kia"));
+        unsoldInventory.add(new Car("a014", "seltosp", 789, "Blue", "kia"));
 
-        return carList;
+        return unsoldInventory;
     }
 
     public List<Car> getCarByBrand(String brand) {
         List<Car> list = new ArrayList<>();
-        for (Car c : carList) {
+        for (Car c : unsoldInventory) {
             if (c.getBrand().equals(brand)) {
                 list.add(c);
             }
@@ -74,7 +79,7 @@ public class CarTest {
 
     public List<Car> getCarByColor(String color) {
         List<Car> list = new ArrayList<>();
-        for (Car c : carList) {
+        for (Car c : unsoldInventory) {
             if (c.getColor().equals(color)) {
                 list.add(c);
             }
@@ -84,14 +89,14 @@ public class CarTest {
 
     public long getCarAveragePrice() {
         int sum = 0, avg = 0;
-        for (int i = 0; i < carList.size(); i++) {
-            sum += carList.get(i).getPrice();
+        for (int i = 0; i < unsoldInventory.size(); i++) {
+            sum += unsoldInventory.get(i).getPrice();
         }
-        avg = sum / carList.size();
+        avg = sum / unsoldInventory.size();
         return avg;
     }
 
-    public int getCarLowestPrice() {
+    public int getCarLowestPrice(List<Car> carList) {
         int lowest = 99999;
         for (Car c : carList) {
             if (lowest > c.getPrice()) {
@@ -101,7 +106,7 @@ public class CarTest {
         return lowest;
     }
 
-    public int getCarHighestPrice() {
+    public int getCarHighestPrice(List<Car> carList) {
         int highest = -1;
         for (Car c : carList) {
             if (highest < c.getPrice()) {
@@ -113,7 +118,7 @@ public class CarTest {
 
     public List<Car> getCarByColorAndGreaterThanPrice(String color, int price) {
         List<Car> list = new ArrayList<>();
-        for (Car c : carList) {
+        for (Car c : unsoldInventory) {
             if (c.getColor().equals(color) && c.getPrice() > price) {
                 list.add(c);
             }
@@ -124,7 +129,7 @@ public class CarTest {
     public List<Car> getCarListGreaterThanAveragePrice() {
         List<Car> list = new ArrayList<>();
         long average = getCarAveragePrice();
-        for (Car c : carList) {
+        for (Car c : unsoldInventory) {
             if (average < c.getPrice()) {
                 list.add(c);
             }
@@ -138,36 +143,37 @@ public class CarTest {
      * @return
      */
     public int getCarDiffLowestAndHighest() {
-        return getCarHighestPrice() - getCarLowestPrice();
+        return getCarHighestPrice(unsoldInventory) - getCarLowestPrice(unsoldInventory);
     }
 
     public int getCarByBrandCount(String brand) {
-        List<Car> list = new ArrayList<>();
         int count = 0;
-        for (Car b : carList) {
+        for (Car b : unsoldInventory) {
             if (b.getBrand().equals(brand)) {
                 count++;
-                list.add(b);
-
-
             }
         }
         return count;
     }
 
     public int getCarByColorCount(String color) {
-        List<Car> list = new ArrayList<>();
         int count = 0;
-        for (Car c : carList) {
+        for (Car c : unsoldInventory) {
             if (c.getColor().equals(color)) {
                 count++;
-                list.add(c);
-
-
             }
         }
         return count;
+    }
 
+    public int getCarPriceDifferenceByBrand(String brand) {
+        List<Car> list = new ArrayList<>();
+        for (Car c : unsoldInventory) {
+            if (c.getBrand().equals(brand)) {
+                list.add(c);
+            }
+        }
+        return getCarHighestPrice(list) - getCarLowestPrice(list);
     }
 }
 
