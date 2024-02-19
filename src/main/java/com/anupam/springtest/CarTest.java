@@ -33,12 +33,15 @@ public class CarTest {
 
         List<Car> list5 = carTest.getCarByColorAndGreaterThanPrice("Red", 5000);
         System.out.println("getCarByColorAndGreaterThanPrice: \n" + list5);
+        int list9 = carTest.getCarByBrandCount("Tata");
+        System.out.println("getCarByBrandCountDetails: \n" + list9);
 
         List<Car> list6 = carTest.getCarListGreaterThanAveragePrice();
         System.out.println("getCarListGreaterThanAveragePrice: \n" + list6);
         int difflowestandhighest = carTest.getCarDiffLowestAndHighest();
         System.out.println("getcarlowestandhighest: \n" + difflowestandhighest);
-
+        int list7 = carTest.getCarByColorCount("Blue");
+        System.out.println("getCarByColorCountDetails: \n" + list9);
 
     }
 
@@ -137,7 +140,53 @@ public class CarTest {
     public int getCarDiffLowestAndHighest() {
         return getCarHighestPrice() - getCarLowestPrice();
     }
+
+    public int getCarByBrandCount(String brand) {
+        List<Car> list = new ArrayList<>();
+        int count = 0;
+        for (Car b : carList) {
+            if (b.getBrand().equals(brand)) {
+                count++;
+                list.add(b);
+
+
+            }
+        }
+        return count;
+    }
+
+    public int getCarByColorCount(String color) {
+        List<Car> list = new ArrayList<>();
+        int count = 0;
+        for (Car c : carList) {
+            if (c.getColor().equals(color)) {
+                count++;
+                list.add(c);
+
+
+            }
+        }
+        return count;
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
