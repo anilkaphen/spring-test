@@ -4,6 +4,7 @@ import com.anupam.springtest.modal.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CarTest {
     private static List<Car> unsoldInventory = new ArrayList<>();
@@ -45,6 +46,16 @@ public class CarTest {
 
         int list8 = carTest.getCarPriceDifferenceByBrand("Maruti");
         System.out.println("getCarPriceDifferenceByBrand: \n" + list8);
+
+        carTest.sellCar("a001");
+        carTest.sellCar("a003");
+        carTest.sellCar("a005");
+        carTest.sellCar("a002");
+        carTest.sellCar("a004");
+        carTest.sellCar("a006");
+        System.out.println("sold car: "+soldInventory);
+
+
 
     }
 
@@ -174,6 +185,18 @@ public class CarTest {
             }
         }
         return getCarHighestPrice(list) - getCarLowestPrice(list);
+    }
+
+    public void sellCar(String id) {
+        Optional<Car> car = unsoldInventory.stream().filter(e->e.getId().equals(id)).findFirst();
+        soldInventory.add(car.get());
+        for(int i=0;i<unsoldInventory.size();++i) {
+            if(id.equals(unsoldInventory.get(i).getId())){
+                unsoldInventory.remove(i);
+                break;
+            }
+        }
+        System.out.println("Id: "+id +"\t sold");
     }
 }
 
