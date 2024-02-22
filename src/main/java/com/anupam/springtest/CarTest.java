@@ -2,9 +2,8 @@ package com.anupam.springtest;
 
 import com.anupam.springtest.modal.Car;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CarTest {
     private static List<Car> unsoldInventory = new ArrayList<>();
@@ -46,6 +45,12 @@ public class CarTest {
 
         int list8 = carTest.getCarPriceDifferenceByBrand("Maruti");
         System.out.println("getCarPriceDifferenceByBrand: \n" + list8);
+        List<Car> list10 = carTest.getCarPriceIncreasigOrder();
+
+        System.out.println("PriceIncreasigOrder: \n" + list10);
+        List<Car> list11 = carTest.getCarPriceDcreasigOrder();
+        System.out.println("PriceIncreasigOrder: \n" + list11);
+
 
         carTest.sellCar("a001");
         carTest.sellCar("a003");
@@ -53,10 +58,7 @@ public class CarTest {
         carTest.sellCar("a002");
         carTest.sellCar("a004");
         carTest.sellCar("a006");
-        System.out.println("sold car: "+soldInventory);
-
-
-
+        System.out.println("sold car: " + soldInventory);
     }
 
     public List<Car> getAllCarDetails() {
@@ -188,17 +190,33 @@ public class CarTest {
     }
 
     public void sellCar(String id) {
-        Optional<Car> car = unsoldInventory.stream().filter(e->e.getId().equals(id)).findFirst();
+        Optional<Car> car = unsoldInventory.stream().filter(e -> e.getId().equals(id)).findFirst();
         soldInventory.add(car.get());
-        for(int i=0;i<unsoldInventory.size();++i) {
-            if(id.equals(unsoldInventory.get(i).getId())){
+        for (int i = 0; i < unsoldInventory.size(); ++i) {
+            if (id.equals(unsoldInventory.get(i).getId())) {
                 unsoldInventory.remove(i);
                 break;
             }
         }
-        System.out.println("Id: "+id +"\t sold");
+        System.out.println("Id: " + id + "\t sold");
     }
-}
+
+    public List<Car> getCarPriceIncreasigOrder() {
+        List < Car > list = unsoldInventory.stream()
+                .sorted(Comparator.comparingLong(Car::getPrice)).collect(Collectors.toList());
+        System.out.println(list);
+        return list;
+    }
+
+
+    public List<Car> getCarPriceDcreasigOrder(){
+        List < Car > list = unsoldInventory.stream()
+                .sorted(Comparator.comparingLong(Car::getPrice).reversed()).collect(Collectors.toList());
+        System.out.println(list);
+        return list;
+    }
+    }
+
 
 
 
