@@ -60,6 +60,9 @@ public class CarTest {
         carTest.sellCar("a006");
         System.out.println("sold car: " + soldInventory);
 
+        String maxUnSoldBrand = carTest.getMaxCarBrand(unsoldInventory);
+        System.out.println("maxUnSoldBrand: " + maxUnSoldBrand);
+
         String maxSoldBrand = carTest.getMaxCarBrand(soldInventory);
         System.out.println("maxSoldBrand: " + maxSoldBrand);
 
@@ -224,7 +227,7 @@ public class CarTest {
         Map<String, Integer> map = new HashMap<>();
         for(int i=0; i<carList.size();i++) {
             if (map.containsKey(carList.get(i).getBrand())) {
-                map.put(carList.get(i).getBrand(), map.get(carList.get(0).getBrand())+1);
+                map.put(carList.get(i).getBrand(), map.get(carList.get(i).getBrand())+1);
             } else {
                 map.put(carList.get(i).getBrand(), 1);
             }
