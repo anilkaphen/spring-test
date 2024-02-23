@@ -61,7 +61,10 @@ public class CarTest {
         System.out.println("sold car: " + soldInventory);
 
         String maxSoldBrand = carTest.getMaxCarBrand(soldInventory);
-        System.out.println("maxSoldBrand: " + maxSoldBrand);
+        System.out.println("maxUnSoldBrand: " + maxSoldBrand);
+        String maxSoldPrice = carTest.getMaxCarPrice(soldInventory);
+        System.out.println("maxUnSoldPrice: " + maxSoldPrice);
+
 
     }
 
@@ -206,15 +209,15 @@ public class CarTest {
     }
 
     public List<Car> getCarPriceIncreasigOrder() {
-        List < Car > list = unsoldInventory.stream()
+        List<Car> list = unsoldInventory.stream()
                 .sorted(Comparator.comparingLong(Car::getPrice)).collect(Collectors.toList());
         System.out.println(list);
         return list;
     }
 
 
-    public List<Car> getCarPriceDcreasigOrder(){
-        List < Car > list = unsoldInventory.stream()
+    public List<Car> getCarPriceDcreasigOrder() {
+        List<Car> list = unsoldInventory.stream()
                 .sorted(Comparator.comparingLong(Car::getPrice).reversed()).collect(Collectors.toList());
         System.out.println(list);
         return list;
@@ -222,27 +225,82 @@ public class CarTest {
 
     public String getMaxCarBrand(List<Car> carList) {
         Map<String, Integer> map = new HashMap<>();
-        for(int i=0; i<carList.size();i++) {
+        for (int i = 0; i < carList.size(); i++) {
             if (map.containsKey(carList.get(i).getBrand())) {
-                map.put(carList.get(i).getBrand(), map.get(carList.get(0).getBrand())+1);
+                map.put(carList.get(i).getBrand(), map.get(carList.get(0).getBrand()) + 1);
             } else {
                 map.put(carList.get(i).getBrand(), 1);
             }
         }
 
-        int count=-1;
+        int count = -1;
         String brand = "";
-        for(Map.Entry<String, Integer> entry: map.entrySet()){
-            if(entry.getValue()>count) {
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > count) {
                 count = entry.getValue();
                 brand = entry.getKey();
             }
         }
         return brand;
     }
+
+    public int getMaxCarPrice(List<Car> carList) {
+        int max = -1;
+
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < carList.size(); i++) {
+            if (max<car[i].getprice()){
+max=car[i].getprice();
+            }
+        }
+if(mx!=0){
+return  max;
+    }
+    public int getMaxCarPrice(List<Car> carList) {
+        int min = 1;
+
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < carList.size(); i++) {
+            if (min < Car[i].getPrice()) {
+                min = Car[i].getPrice();
+
+            }
+        }
+        return min;
+    }
+    public long getavgprice( )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+        }
+        return max;
+    }
+
 }
-
-
 
 
 
