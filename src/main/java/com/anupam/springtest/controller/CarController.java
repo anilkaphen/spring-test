@@ -40,14 +40,13 @@ public class CarController {
     @GetMapping("/lowest/price")
     public List<Car> getCarDetailsByprice() {
         List<Car> carList = new ArrayList<>();
+//        int price = -1, lowest = -1;
+//       // for (car   : carList) {
+//        }
+//        if (price < lowest) {
+//            lowest = price;
+//        }
         return null;
-        int price = 0, lowest = -1, sum = 0;
-        for (int i : list) {
-            sum = sum + i;
-        }
-        if (price < lowest) {
-            lowest = price;
-        }
     }
     @PostMapping("/car")
     public void updateCar(@RequestBody Car car) {
@@ -56,30 +55,13 @@ public class CarController {
     @GetMapping("/car/color/{color}")
     public List<Car> getCarcolorDetails(@PathVariable String color) {
         List<Car> carList = new ArrayList<>();
-        for (Car c : list) {
+       for (Car c : list) {
             if (c.getColor().equals(color)) ;
 
             carList.add(c);
         }
         return carList;
     }
-
-    @GetMapping("/highest/price")
-    public List<Car> getCarDetailsByprice() {
-        List<Car> carList = new ArrayList<>();
-        int price = 0, highest = -1, sum = 0;
-        for (Car i : list) {
-            sum = sum + i;
-        }
-        if (price > highest) {
-            highest = price;
-        }
-
-
-        return null;
-
-    }
-
     @GetMapping("/avg/{price}")
     public int getCarPriceDetails(@PathVariable String price, List<Car> cars) {
 
