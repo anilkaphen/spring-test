@@ -62,10 +62,9 @@ public class CarTest {
 
         String maxSoldBrand = carTest.getMaxCarBrand(soldInventory);
         System.out.println("maxUnSoldBrand: " + maxSoldBrand);
-        Integer maxSoldPrice = carTest.getMaxCarPrice(soldInventory);
-        System.out.println("getMaxCarPrice: " + maxSoldPrice);
-        int avgPriceofSoldcar = carTest.getAvgPriceOfSoldCar(soldInventory);
-        System.out.println( " avgPriceofSoldcar :" +avgPriceofSoldcar );
+        String maxSoldPrice = carTest.getMaxCarPrice(soldInventory);
+        System.out.println("maxUnSoldPrice: " + maxSoldPrice);
+
 
     }
 
@@ -244,36 +243,68 @@ public class CarTest {
         }
         return brand;
     }
-public  Integer getMaxCarPrice(List<Car> carList){
-        Map<Integer, Integer> map = new HashMap<>();
+
+    public int getMaxCarPrice(List<Car> carList) {
+        int max = -1;
+
+        Map<String, Integer> map = new HashMap<>();
         for (int i = 0; i < carList.size(); i++) {
-            if (map.containsKey(carList.get(i).getPrice())){
-                map.put(carList.get(i).getPrice(), map.get(carList.get(0).getBrand()) + 1);
-            } else {
-               map.put(carList.get(i).getPrice(),1);
+            if (max<car[i].getprice()){
+max=car[i].getprice();
             }
         }
-    int count = -1;
-    int price =0;
-    for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-        if (entry.getValue() > count) {
-            count = entry.getValue();
-            price = entry.getKey();
-        }
+if(mx!=0){
+return  max;
     }
-    return price;
-}
-    public int getAvgPriceOfSoldCar(Map<Integer, Car> map) {
-        int sum = 0;
-        for (Map.Entry<Integer, Car> e : map.entrySet()) {
-            sum = sum + e.getValue().getPrice();
+    public int getMaxCarPrice(List<Car> carList) {
+        int min = 1;
+
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < carList.size(); i++) {
+            if (min < Car[i].getPrice()) {
+                min = Car[i].getPrice();
+
+            }
         }
-        return sum / map.size();
+        return min;
+    }
+    public long getavgprice( )
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+        }
+        return max;
     }
 
 }
+
+
+
+
 
 
 
