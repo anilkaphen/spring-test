@@ -62,7 +62,7 @@ public class CarTest {
 
         String maxSoldBrand = carTest.getMaxCarBrand(soldInventory);
         System.out.println("maxUnSoldBrand: " + maxSoldBrand);
-        String maxSoldPrice = carTest.getMaxCarPrice(soldInventory);
+        int maxSoldPrice = carTest.getMaxCarPrice(soldInventory);
         System.out.println("maxUnSoldPrice: " + maxSoldPrice);
 
 
@@ -245,89 +245,6 @@ public class CarTest {
     }
 
     public int getMaxCarPrice(List<Car> carList) {
-        int max = -1;
-
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < carList.size(); i++) {
-            if (max<car[i].getprice()){
-max=car[i].getprice();
-            }
-        }
-if(mx!=0){
-return  max;
+        return 0;
     }
-    public int getMaxCarPrice(List<Car> carList) {
-        int min = 1;
-
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < carList.size(); i++) {
-            if (min < Car[i].getPrice()) {
-                min = Car[i].getPrice();
-
-            }
-        }
-        return min;
-    }
-    public long getavgprice( )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            }
-
-        }
-        return max;
-    }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
