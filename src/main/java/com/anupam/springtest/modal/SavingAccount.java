@@ -1,9 +1,9 @@
-package com.anupam.springtest;
+package com.anupam.springtest.modal;
 
 import java.time.LocalDate;
 
-public class Account1 {
-    private int AccNo;
+public class SavingAccount {
+    private String accountNo;
     private String name;
     private int age;
     private String city;
@@ -12,8 +12,8 @@ public class Account1 {
     private boolean gender;
     private LocalDate dob;
 
-    public Account1(int accNo, String name, int age, String city, long balance, String state, boolean gender, LocalDate dob) {
-        AccNo = accNo;
+    public SavingAccount(String accNo, String name, int age, String city, long balance, String state, boolean gender, LocalDate dob) {
+        this.accountNo = accNo;
         this.name = name;
         this.age = age;
         this.city = city;
@@ -23,29 +23,15 @@ public class Account1 {
         this.dob = dob;
     }
 
-    public Account1() {
+    public SavingAccount() {
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "AccNo=" + AccNo +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", city='" + city + '\'' +
-                ", balance=" + balance +
-                ", state='" + state + '\'' +
-                ", gender=" + gender +
-                ", dob=" + dob +
-                '}';
+    public String getAccountNo() {
+        return accountNo;
     }
 
-    public int getAccNo() {
-        return AccNo;
-    }
-
-    public void setAccNo(int accNo) {
-        AccNo = accNo;
+    public void setAccountNo(String accountNo) {
+        this.accountNo = accountNo;
     }
 
     public String getName() {
@@ -103,6 +89,22 @@ public class Account1 {
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountNo=" + accountNo +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", city='" + city + '\'' +
+                ", balance=" + balance +
+                ", state='" + state + '\'' +
+                ", gender=" + gender +
+                ", dob=" + dob +
+                '}';
+    }
+
+
 }
 
 
