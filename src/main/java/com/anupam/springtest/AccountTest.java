@@ -1,52 +1,49 @@
 package com.anupam.springtest;
 
-import com.anupam.springtest.modal.Car;
 import com.anupam.springtest.modal.SavingAccount;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.anupam.springtest.modal.SavingAccount.*;
-
 public class AccountTest {
-
-    private static List<SavingAccount> employeeDetails = new ArrayList<>();
+    private static List<SavingAccount> accountDetails = new ArrayList<>();
 
     public static void main(String[] args) {
+        AccountTest accountTest = new AccountTest();
 
-        AccountTest list = new AccountTest();
-        long maxBalance = list.getMaxBalEmployedetails(employeeDetails);
-        System.out.println("getMaxBalEmployedetails: \n" + maxBalance);
-        int MinBalance = list.getMinBalance(employeeDetails);
+        accountDetails = accountTest.saveAccounts();
+
+        long maxBalance = accountTest.getMaxAccountBalance(accountDetails);
+        System.out.println("getMaxAccountBalance: \n" + maxBalance);
+
+        long MinBalance = accountTest.getMinBalance(accountDetails);
         System.out.println("getMinBalance: \n" + MinBalance);
 
-        List<SavingAccount> AccountByCity = list.getAccountByCity("Patna");
+        List<SavingAccount> AccountByCity = accountTest.getAccountByCity("Patna");
         System.out.println("getAccountByCity: \n" + AccountByCity);
 
+        long AccountAverageBalance = accountTest.getAccountAverageBalance();
+        System.out.println(" getAccountAverageBalance\n: " + AccountAverageBalance);
 
-        Long AccountAverageBalance = list.getAccountAverageBalance();
-        System.out.println(" getAccountAverageBalance\n: \n" + AccountAverageBalance);
-
+        System.out.println(" getAccountByGender\n: " + accountTest.getAccountByGender(false));
     }
 
-
-    public List<SavingAccount> getArryList() {
+    public List<SavingAccount> saveAccounts() {
         List<SavingAccount> list = new ArrayList<>();
 
-        list.add(new SavingAccount("AC001", "Mohan", 10, "Patna", 10000, "Bihar",false, LocalDate.of(1992, 02, 15)));
-        list.add(new SavingAccount("AC002", "Sohan", 12, "Patna", 20000, "Bihar", false, LocalDate.of(1994, 03, 14)));
-        list.add(new SavingAccount("AC003", "Ram", 14, "Patna", 5000, "Bihar", false, LocalDate.of(1996, 05, 12)));
-        list.add(new SavingAccount("AC004", "Sita", 16, "Patna", 7000, "Bihar", false, LocalDate.of(1998, 07, 10)));
-        list.add(new SavingAccount("AC005", "Raja", 18, "Patna", 11000, "Bihar", false, LocalDate.of(1999, 10, 6)));
-        list.add(new SavingAccount("AC006", "Gita", 21, "Patna", 18000, "Bihar", false, LocalDate.of(2000, 04, 5)));
+        list.add(new SavingAccount("AC001", "Mohan", 10, "Patna", 10000, "Bihar", true, LocalDate.of(1992, 02, 15)));
+        list.add(new SavingAccount("AC002", "Sohan", 12, "Muz", 20000, "Bihar", true, LocalDate.of(1994, 03, 14)));
+        list.add(new SavingAccount("AC003", "Ram", 14, "Muz", 5000, "Bihar", true, LocalDate.of(1996, 05, 12)));
+        list.add(new SavingAccount("AC004", "Sita", 16, "Mumbai", 7000, "Maha", false, LocalDate.of(1998, 07, 10)));
+        list.add(new SavingAccount("AC005", "Raja", 18, "Pune", 11000, "Bihar", true, LocalDate.of(1999, 10, 6)));
+        list.add(new SavingAccount("AC006", "Gita", 21, "Delhi", 18000, "Delhi", false, LocalDate.of(2000, 04, 5)));
 
-        return null;
+        return list;
     }
 
-    public long getMaxBalEmployedetails(List<SavingAccount> savingAccounts) {
-
-        int max = -1;
+    public long getMaxAccountBalance(List<SavingAccount> savingAccounts) {
+        long max = -1;
         for (SavingAccount s : savingAccounts) {
             if (max < s.getBalance()) {
                 max = s.getBalance();
@@ -57,7 +54,7 @@ public class AccountTest {
 
     public List<SavingAccount> getAccountByCity(String city) {
         List<SavingAccount> list = new ArrayList<>();
-        for (SavingAccount s : employeeDetails) {
+        for (SavingAccount s : accountDetails) {
             if (s.getCity().equals(city)) {
                 list.add(s);
             }
@@ -66,19 +63,15 @@ public class AccountTest {
     }
 
     public long getAccountAverageBalance() {
-        int sum = 0, avg = 0;
-        for (int i = 0; i < employeeDetails.size(); i++) {
-            sum += employeeDetails.get(i).getBalance();
+        long sum = 0;
+        for (int i = 0; i < accountDetails.size(); i++) {
+            sum += accountDetails.get(i).getBalance();
         }
-        avg = sum / employeeDetails.size();
-        return avg;
+        return sum / accountDetails.size();
     }
 
-
-
-
-    public int getMinBalance(List<SavingAccount> savingAccounts) {
-        int lowest = 99999;
+    public long getMinBalance(List<SavingAccount> savingAccounts) {
+        long lowest = 99999;
         for (SavingAccount c : savingAccounts) {
             if (lowest > c.getBalance()) {
                 lowest = c.getBalance();
@@ -87,8 +80,16 @@ public class AccountTest {
         return lowest;
     }
 
-
+    public List<SavingAccount> getAccountByGender(boolean gender) {
+        List<SavingAccount> list = new ArrayList<>();
+        for (SavingAccount s : accountDetails) {
+            if (s.isGender()==(gender)) {
+                list.add(s);
+            }
+        }
+        return list;
     }
+}
 
 
 

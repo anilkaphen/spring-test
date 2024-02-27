@@ -58,7 +58,7 @@ public class SavingAccount {
         this.city = city;
     }
 
-    public int getBalance() {
+    public long getBalance() {
         return balance;
     }
 
