@@ -45,6 +45,7 @@ public class NumberTest {
     public List<Integer> getAvgNumGreater(List<Integer> list) {
         int sum = 0, avg = getAvg(list);
         List<Integer> list2 = new ArrayList<>();
+
         for (int i = 0; i < list.size(); i++) {
             if (avg > list.get(i)) {
                 list2.add(list.get(i));
