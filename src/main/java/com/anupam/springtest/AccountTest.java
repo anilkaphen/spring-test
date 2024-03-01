@@ -22,24 +22,24 @@ public class AccountTest {
 
         List<SavingAccount> AccountByCity = accountTest.getAccountByCity("Patna");
         System.out.println("getAccountByCity: \n" + AccountByCity);
-        List<SavingAccount> AccountByMonth =  accountTest.getAccountByMonth("January");
+        List<SavingAccount> AccountByMonth = accountTest.getAccountByMonth("January");
         System.out.println("getAccountByMonth: \n" + AccountByMonth);
 
         List<SavingAccount> EmployeByDobAndState = accountTest.getEmployeByDobAndState();
         System.out.println("getEmployeByDobAndState =: \n" + EmployeByDobAndState);
 
-        List<SavingAccount> AccountByStateAndCity = accountTest.getEmployeeByStateAndCity("Bihar","Muz");
+        List<SavingAccount> AccountByStateAndCity = accountTest.getEmployeeByStateAndCity("Bihar", "Muz");
         System.out.println("AccountByStateAndCity: \n" + AccountByStateAndCity);
 
         long AccountAverageBalance = accountTest.getAccountAverageBalance();
         System.out.println(" getAccountAverageBalance\n: " + AccountAverageBalance);
-        List<SavingAccount> WomenAccountOfBihar =       accountTest.getWomenAccountOfBihar();
+        List<SavingAccount> WomenAccountOfBihar = accountTest.getWomenAccountOfBihar();
 
         System.out.println(" getWomenAccountOfBihar\n: " + WomenAccountOfBihar);
 
         //System.out.println(" getAccountByGender\n: " + accountTest.getAccountByGender(false));
-        long maxSalayBihar=accountTest.getMaxSalBihar();
-        System.out.println("getMaxSalBihar\n:"+maxSalayBihar);
+        long maxSalayBihar = accountTest.getMaxSalBihar();
+        System.out.println("getMaxSalBihar\n:" + maxSalayBihar);
 
     }
 
@@ -98,21 +98,23 @@ public class AccountTest {
     public List<SavingAccount> getAccountByGender(boolean gender) {
         List<SavingAccount> list = new ArrayList<>();
         for (SavingAccount s : accountDetails) {
-            if (s.isGender()==(gender)) {
+            if (s.isGender() == (gender)) {
                 list.add(s);
             }
         }
         return list;
     }
+
     public List<SavingAccount> getAccountByYear(int year) {
         List<SavingAccount> list = new ArrayList<>();
         for (SavingAccount s : accountDetails) {
-            if (s.getDob().getYear()>(year)) {
+            if (s.getDob().getYear() > (year)) {
                 list.add(s);
             }
         }
         return list;
     }
+
     public List<SavingAccount> getAccountByState(String state) {
         List<SavingAccount> list = new ArrayList<>();
         for (SavingAccount s : accountDetails) {
@@ -133,42 +135,44 @@ public class AccountTest {
         return list;
     }
 
-    public List<SavingAccount> getEmployeeByStateAndCity( String state ,String city) {
+    public List<SavingAccount> getEmployeeByStateAndCity(String state, String city) {
         List<SavingAccount> list = new ArrayList<>();
         for (SavingAccount s : accountDetails) {
-            if (s.getState().equals(state) && s.getCity().equals(city));
-                list.add(s);
-            }
+            if (s.getState().equals(state) && s.getCity().equals(city)) ;
+            list.add(s);
+        }
         return list;
     }
 
 
-    public  long getMinSalMaharashtra(List<SavingAccount> savingAccounts){
+    public long getMinSalMaharashtra(List<SavingAccount> savingAccounts) {
         long lowest = 9999;
-        for(SavingAccount s :accountDetails){
-            if(lowest < s.getBalance()){
-                lowest= s.getBalance();
+        for (SavingAccount s : accountDetails) {
+            if (lowest < s.getBalance()) {
+                lowest = s.getBalance();
             }
 
         }
-        return  lowest;
+        return lowest;
 
     }
-    public long getMaxSalBihar( ){
+
+    public long getMaxSalBihar() {
         List<SavingAccount> list = getAccountByState("Bihar");
-        long maximum=-1;
-        for(SavingAccount s :list){
-            if(maximum>s.getBalance()){
-                maximum=s.getBalance();
+        long maximum = -1;
+        for (SavingAccount s : list) {
+            if (maximum > s.getBalance()) {
+                maximum = s.getBalance();
             }
         }
         return maximum;
 
     }
-    public List<SavingAccount> getWomenAccountOfBihar( ) {
+
+    public List<SavingAccount> getWomenAccountOfBihar() {
         List<SavingAccount> list = new ArrayList<>();
         for (SavingAccount s : accountDetails) {
-            if(s.isGender()== false && s.getState().equals("Bihar"))
+            if (s.isGender() == false && s.getState().equals("Bihar"))
                 list.add(s);
 
         }
@@ -176,30 +180,20 @@ public class AccountTest {
 
         return list;
     }
+
     public List<SavingAccount> getAccountByMonth(String month) {
         List<SavingAccount> list = new ArrayList<>();
         for (SavingAccount s : accountDetails) {
-           if (month.equals(s.getDob().getMonth())) {
+            if (month.equals(s.getDob().getMonth())) {
                 list.add(s);
 
-            if(s.getDob().getMonth().equals(month)){
-                list.add(s);
+                if (s.getDob().getMonth().equals(month)) {
+                    list.add(s);
+                }
             }
         }
         return list;
     }
-
-//    public List<SavingAccount> getAccountByWeek(String week) {
-//        List<SavingAccount> list = new ArrayList<>();
-//        for (SavingAccount s : accountDetails) {
-//            if (s.getDob().getMonth(). {
-//                list.add(s);
-//            }
-//        }
-////        return list;
-////    }
-
-}}
-
+}
 
 
