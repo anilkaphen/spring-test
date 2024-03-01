@@ -22,6 +22,8 @@ public class AccountTest {
 
         List<SavingAccount> AccountByCity = accountTest.getAccountByCity("Patna");
         System.out.println("getAccountByCity: \n" + AccountByCity);
+        List<SavingAccount> AccountByMonth =  accountTest.getAccountByMonth("January");
+        System.out.println("getAccountByMonth: \n" + AccountByMonth);
 
         List<SavingAccount> EmployeByDobAndState = accountTest.getEmployeByDobAndState();
         System.out.println("getEmployeByDobAndState =: \n" + EmployeByDobAndState);
@@ -36,6 +38,9 @@ public class AccountTest {
         System.out.println(" getWomenAccountOfBihar\n: " + WomenAccountOfBihar);
 
         //System.out.println(" getAccountByGender\n: " + accountTest.getAccountByGender(false));
+        long maxSalayBihar=accountTest.getMaxSalBihar();
+        System.out.println("getMaxSalBihar\n:"+maxSalayBihar);
+
     }
 
     public List<SavingAccount> saveAccounts() {
@@ -99,6 +104,15 @@ public class AccountTest {
         }
         return list;
     }
+    public List<SavingAccount> getAccountByYear(int year) {
+        List<SavingAccount> list = new ArrayList<>();
+        for (SavingAccount s : accountDetails) {
+            if (s.getDob().getYear()>(year)) {
+                list.add(s);
+            }
+        }
+        return list;
+    }
     public List<SavingAccount> getAccountByState(String state) {
         List<SavingAccount> list = new ArrayList<>();
         for (SavingAccount s : accountDetails) {
@@ -108,7 +122,7 @@ public class AccountTest {
         }
         return list;
     }
-//getEmployeByDobAndState
+
     public List<SavingAccount> getEmployeByDobAndState() {
         List<SavingAccount> list = new ArrayList<>();
         for (SavingAccount s : accountDetails) {
@@ -140,9 +154,10 @@ public class AccountTest {
         return  lowest;
 
     }
-    public long getMaxSalBihar(List<SavingAccount> savingAccounts){
+    public long getMaxSalBihar( ){
+        List<SavingAccount> list = getAccountByState("Bihar");
         long maximum=-1;
-        for(SavingAccount s :accountDetails){
+        for(SavingAccount s :list){
             if(maximum>s.getBalance()){
                 maximum=s.getBalance();
             }
@@ -160,7 +175,31 @@ public class AccountTest {
 
 
         return list;
-    }}
+    }
+    public List<SavingAccount> getAccountByMonth(String month) {
+        List<SavingAccount> list = new ArrayList<>();
+        for (SavingAccount s : accountDetails) {
+           if (month.equals(s.getDob().getMonth())) {
+                list.add(s);
+
+            if(s.getDob().getMonth().equals(month)){
+                list.add(s);
+            }
+        }
+        return list;
+    }
+
+//    public List<SavingAccount> getAccountByWeek(String week) {
+//        List<SavingAccount> list = new ArrayList<>();
+//        for (SavingAccount s : accountDetails) {
+//            if (s.getDob().getMonth(). {
+//                list.add(s);
+//            }
+//        }
+////        return list;
+////    }
+
+}}
 
 
 
