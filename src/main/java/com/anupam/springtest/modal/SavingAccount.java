@@ -2,7 +2,8 @@ package com.anupam.springtest.modal;
 
 import java.time.LocalDate;
 
-public class SavingAccount {
+public class SavingAccount //implements Comparable<SavingAccount>
+{
     private String accountNo;
     private String name;
     private int age;
@@ -105,6 +106,10 @@ public class SavingAccount {
     }
 
 
+//    @Override
+//    public int compareTo(SavingAccount o) {
+//        return this.getAge()-o.getAge();
+//    }
 }
 
 
