@@ -72,18 +72,13 @@ public class AccountMapTest {
         }
         return list;
     }
-    public long getAccountAverageBalance(Map<String, SavingAccount> map) {
-        long sum = 0;
-        for(SavingAccount s : map.values()){
-            sum += SavingAccount.get(s).getvalue();
-        }
-        return sum / SavingAccount.size();
-    }
-        }
-
-        }
-
-
+//    public long getAccountAverageBalance(Map<String, SavingAccount> map) {
+//        long sum = 0;
+//        for(SavingAccount s : map.values()){
+//            sum += SavingAccount.get(s).getvalue();
+//        }
+//        return sum / SavingAccount.size();
+//    }
 }
 
 
